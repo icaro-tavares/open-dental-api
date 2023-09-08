@@ -5,10 +5,15 @@ import { EntityManager } from 'typeorm';
 export class DataReplicationService {
   constructor(private readonly entityManager: EntityManager) {}
 
-  async upsertData(clinicId: string, tableName: string, data: any[], primaryKeys: string[]) {
+  async upsertData(
+    clinicId: string,
+    tableName: string,
+    data: any[],
+    primaryKeys: string[],
+  ) {
     for (const record of data) {
       const columns = Object.keys(record);
-      columns.push("ClinicSyncId");
+      columns.push('ClinicSyncId');
 
       const values = Object.values(record);
       values.push(clinicId);

@@ -10,7 +10,9 @@ type ReplicationTableInfo = {
 
 @Injectable()
 export class DataReplicationUseCase {
-  constructor(private readonly dataReplicationService: DataReplicationService) {}
+  constructor(
+    private readonly dataReplicationService: DataReplicationService,
+  ) {}
 
   async execute(data: any): Promise<void> {
     const tableInfo = await this.getTableInfo();
@@ -36,15 +38,15 @@ export class DataReplicationUseCase {
 
   private async getTableInfo(): Promise<ReplicationTableInfo> {
     return {
-      patient: { primaryKeys: ["PatNum", "ClinicSyncId"] },
-      appointment: { primaryKeys: ["AptNum", "ClinicSyncId"] },
-      referral: { primaryKeys: ["ReferralNum", "ClinicSyncId"] },
-      insplan: { primaryKeys: ["PlanNum", "ClinicSyncId"] },
-      inssub: { primaryKeys: ["InsSubNum", "ClinicSyncId"] },
-      patplan: { primaryKeys: ["PatPlanNum", "ClinicSyncId"] },
-      commlog: { primaryKeys: ["CommlogNum", "ClinicSyncId"] },
-      definition: { primaryKeys: ["DefNum", "ClinicSyncId"] },
-      refattach: { primaryKeys: ["RefAttachNum", "ClinicSyncId"] },
+      patient: { primaryKeys: ['PatNum', 'ClinicSyncId'] },
+      appointment: { primaryKeys: ['AptNum', 'ClinicSyncId'] },
+      referral: { primaryKeys: ['ReferralNum', 'ClinicSyncId'] },
+      insplan: { primaryKeys: ['PlanNum', 'ClinicSyncId'] },
+      inssub: { primaryKeys: ['InsSubNum', 'ClinicSyncId'] },
+      patplan: { primaryKeys: ['PatPlanNum', 'ClinicSyncId'] },
+      commlog: { primaryKeys: ['CommlogNum', 'ClinicSyncId'] },
+      definition: { primaryKeys: ['DefNum', 'ClinicSyncId'] },
+      refattach: { primaryKeys: ['RefAttachNum', 'ClinicSyncId'] },
     };
   }
 }

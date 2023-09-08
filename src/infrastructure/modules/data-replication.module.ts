@@ -8,9 +8,6 @@ import { DataReplicationService } from 'src/infrastructure/services/data-replica
 @Module({
   imports: [TypeOrmModule.forFeature([DataReplicationEntity])],
   controllers: [DataReplicationController],
-  providers: [
-    DataReplicationUseCase,
-    DataReplicationService,
-  ],
+  providers: [DataReplicationUseCase, DataReplicationService],
 })
 export class DataReplicationModule {}
