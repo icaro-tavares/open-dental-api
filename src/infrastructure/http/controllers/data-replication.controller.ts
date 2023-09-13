@@ -1,5 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
-import { readFileSync } from 'fs';
+import { Body, Controller, Post } from '@nestjs/common';
 import { DataReplicationUseCase } from 'src/domain/usecases/data-replication.usercase';
 
 @Controller('data-replication')
@@ -8,11 +7,10 @@ export class DataReplicationController {
     private readonly dataReplicationUseCase: DataReplicationUseCase,
   ) {}
 
-  @Get()
-  async handle(): Promise<any> {
+  @Post()
+  async handle(@Body() body: any): Promise<any> {
     try {
-      const file = await readFileSync('./data.json');
-      return this.dataReplicationUseCase.execute(JSON.parse(file.toString()));
+      return this.dataReplicationUseCase.execute(body);
     } catch (err) {
       return err.message;
     }
