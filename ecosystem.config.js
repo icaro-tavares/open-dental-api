@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: 'open-dentail-sync',
+      name: 'goat-replication-be',
       script: 'dist/main.js',
       autorestart: true,
       instances: '1',

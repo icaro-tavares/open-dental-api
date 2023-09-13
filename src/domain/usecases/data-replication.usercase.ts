@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { DataReplicationService } from 'src/infrastructure/services/data-replication.service';
+import { DataReplicationRepository } from 'src/infrastructure/repositories/data-replication.service';
 
 type PrimaryKeys = string[];
 type TableInfo = { primaryKeys: PrimaryKeys };
@@ -11,7 +11,7 @@ type ReplicationTableInfo = {
 @Injectable()
 export class DataReplicationUseCase {
   constructor(
-    private readonly dataReplicationService: DataReplicationService,
+    private readonly dataReplicationRepository: DataReplicationRepository,
   ) {}
 
   async execute(data: any): Promise<void> {
@@ -24,7 +24,7 @@ export class DataReplicationUseCase {
         const primaryKeys = tableInfo[tableName].primaryKeys;
         const records = rows[tableName];
 
-        await this.dataReplicationService.upsertData(
+        await this.dataReplicationRepository.upsertData(
           clinicId,
           tableName,
           records,
