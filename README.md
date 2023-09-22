@@ -1,11 +1,11 @@
-# goat-replication-be
+# sync-data-handler
 Writes information from the OpenDental database to the CRM database.
 
 # How to use?
 
 Clone repository:
 ```bash
-git clone git@github.com:GOAT-TECH/goat-replication-be.git
+git clone git@github.com:icaro-tavares/sync-data-handler.git
 ```
 
 Configure the variables in the `.env` file
